@@ -9,12 +9,12 @@ public class Menu {
 
         OperacionesEstudiante.inicializarLista();
 
-        int opcion = 0;
+        int opcion;
 
         do {
             mostrarOpciones();
 
-            opcion = obtenerOpcion();
+            opcion = validarOpcion();
 
             switch (opcion) {
                 case 1:
@@ -37,6 +37,7 @@ public class Menu {
                     break;
                 case 7:
                     OperacionesEstudiante.mostrarEstudiantesConNombreQueEmpiezaConS();
+                    break;
                 case 8:
                     OperacionesEstudiante.listToMap().forEach(
                             (id, estudiante) -> System.out.println(id + ". " + estudiante)
@@ -62,6 +63,7 @@ public class Menu {
     }
 
     private static void mostrarOpciones(){
+
         System.out.println("\nMenu");
         System.out.println("1. Agregar");
         System.out.println("2. Eliminar");
@@ -77,7 +79,7 @@ public class Menu {
         System.out.println("12. Salir");
     }
 
-    private static int obtenerOpcion(){
+    private static int validarOpcion(){
 
         try {
             return scanner.nextInt();
