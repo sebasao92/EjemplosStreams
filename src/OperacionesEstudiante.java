@@ -60,21 +60,31 @@ public class OperacionesEstudiante {
     public static Map<Integer, Estudiante> listToMap(){
         return listaEstudiantes.stream()
                                .collect(Collectors.toMap(
-                                       estudiante -> estudiante.getId(),
+                                       Estudiante::getId,
                                        estudiante -> estudiante
                                ));
     }
 
     public static void mostrarEstudianteConMenorNota() {
+        System.out.println("\nEstudiante con la nota más baja");
         System.out.println(listaEstudiantes.stream()
-                        .min(Comparator.comparing(Estudiante::getNota))
-                        .map(estudiante -> estudiante.toString())
-                        .orElse("No hay estudiantes"));
+                                           .min(Comparator.comparing(Estudiante::getNota))
+                                           .map(Estudiante::toString)
+                                           .orElse("No hay estudiantes"));
     }
 
     public static void mostrarEstudianteConMejorNota() {
+        System.out.println("\nMejor estudiante:");
+        System.out.println(listaEstudiantes.stream()
+                                           .max(Comparator.comparing(Estudiante::getNota))
+                                           .map(Estudiante::toString)
+                                           .orElse("No hay estudiantes"));
     }
 
     public static void mostrarEstudiantesOrdenadosPorApellido() {
+        System.out.println("\nEstudiantes Organizados por Apellido:");
+        listaEstudiantes.stream()
+                        .sorted(Comparator.comparing(Estudiante::getApellido))
+                        .forEach(System.out::println);
     }
 }
