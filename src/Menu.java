@@ -12,23 +12,9 @@ public class Menu {
         int opcion = 0;
 
         do {
-            System.out.println("\nMenu");
-            System.out.println("1. Agregar");
-            System.out.println("2. Eliminar");
-            System.out.println("3. Actualizar");
-            System.out.println("4. Mostrar");
-            System.out.println("5. Mostrar Alumnos que ganaron la materia");
-            System.out.println("6. Número de alumnos que ganaron la materia");
-            System.out.println("7. Mostrar alumnos cuyo nombre empieza por S");
-            System.out.println("8. Convertir lista a Mapa");
-            System.out.println("9. Salir");
+            mostrarOpciones();
 
-            try {
-                opcion = scanner.nextInt();
-            }catch(InputMismatchException exception){
-                opcion = 0;
-                scanner.nextLine();
-            }
+            opcion = obtenerOpcion();
 
             switch (opcion) {
                 case 1:
@@ -68,10 +54,36 @@ public class Menu {
                 case 12:
                     break;
                 default:
-                    System.out.println("opción no valida");
+                    System.out.println("Opción no valida");
             }
         }while(opcion != 12);
 
         System.out.println("Muchas gracias por usar nuestro sistema");
+    }
+
+    private static void mostrarOpciones(){
+        System.out.println("\nMenu");
+        System.out.println("1. Agregar");
+        System.out.println("2. Eliminar");
+        System.out.println("3. Actualizar");
+        System.out.println("4. Mostrar");
+        System.out.println("5. Mostrar Alumnos que ganaron la materia");
+        System.out.println("6. Número de alumnos que ganaron la materia");
+        System.out.println("7. Mostrar alumnos cuyo nombre empieza por S");
+        System.out.println("8. Convertir lista a Mapa");
+        System.out.println("9. ");
+        System.out.println("10. ");
+        System.out.println("11. ");
+        System.out.println("12. Salir");
+    }
+
+    private static int obtenerOpcion(){
+
+        try {
+            return scanner.nextInt();
+        }catch(InputMismatchException exception){
+            scanner.nextLine();
+            return 0;
+        }
     }
 }
